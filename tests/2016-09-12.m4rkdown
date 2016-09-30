@@ -1,0 +1,17 @@
+MEETING_MINUTES(Board meeting, 2016-09-01, 20:00,
+	[Adam Ant, Henrietta Horse, Beatrice Bull], [Ephraim Elephant], [Adam Ant])
+
+Non-Public Part
+---------------
+* RESOLUTION_NONPUBLIC(Resolution 2016-00, VOTE_ADOPTED(4,0,0), World Domination)
+
+Public Part
+-----------
+
+* We thought about things for a while.
+* RESOLUTION(Resolution 2016-01, VOTE_REJECTED(0,4,1), Buy a new house, 390[,]000€)
+* RESOLUTION(Resolution 2016-02, VOTE_ADOPTED(2,1,1), Do something about the roof)
+* RESOLUTION(Resolution 2016-03, VOTE_REJECTED(0,3,1), Merge with Evil Corp, [], We are the Good Guys™.)
+* More things to come.
+
+END(21:59)
