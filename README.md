@@ -60,3 +60,15 @@ Parameters:
 4. Allocated money, if any (optional)
 5. Further text (optional)
 
+
+### `TODO()`, `DONE()`, `TODO_NONPUBLIC()`, `DONE_NONPUBLIC()`
+To Do List items. Use `TODO` to signal that an item needs action, and `DONE` to
+signal that an item was done or is not longer valid.  Non-public variants get
+redacted in public documents.
+
+Parameters:
+
+1. Reference number/string etc.
+2. Assigned person
+3. Descriptive text
+4. Additional notes (optional)

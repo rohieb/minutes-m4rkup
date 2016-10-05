@@ -31,6 +31,25 @@ define([RESOLUTION], [divert(0)dnl
  _RESOLUTION_template([true])
  [divert(1)])dnl
 dnl
+define([_TODO_template], [{ "type": "todo"[,] "public": $1[,] "done": $2[,] dnl
+"ref": "$[1]"[,] "assigned": "$[2]"[,] "text": "$[3]"[,] "notes": "$[4]" }])dnl
+define([TODO], [divert(0)dnl
+ _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
+ _TODO_template([true], [false])dnl
+[divert(1)]])dnl
+define([DONE], [divert(0)dnl
+ _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
+ _TODO_template([true], [true])dnl
+[divert(1)]])dnl
+define([TODO_NONPUBLIC], [divert(0)dnl
+ _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
+ _TODO_template([false], [false])dnl
+[divert(1)]])dnl
+define([DONE_NONPUBLIC], [divert(0)dnl
+ _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
+ _TODO_template([false], [true])dnl
+[divert(1)]])dnl
+dnl
 dnl Must be last call in the document!
 define(END, [divert(0)
  CLOSING_BRACKET, "end_time": "$1" }
