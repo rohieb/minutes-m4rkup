@@ -2,7 +2,7 @@
 LIBPATH="./lib"
 
 usage() {
-	echo "Usage: minutes-m4rkdown <input>"
+	echo "Usage: minutes-m4rkup <input>"
 }
 
 if [ $# -lt 1 ]; then

@@ -1,14 +1,16 @@
-            o           _|_  _  ,             /|  ,_  |)   _|   _
-    /|/|/|  | /|/| |  |  |  |/ / \_____/|/|/|/_|_/  | |/) / |  / \_|  |  |_/|/|
-     | | |_/|/ | |_/\/|_/|_/|_/ \/      | | |__|    |/| \/\/|_/\_/  \/ \/   | |_/
-
+            o           _|_  _  ,              /|  ,_  |)          _
+    /|/|/|  | /|/| |  |  |  |/ / \_____/|/|/| /_|_/  | |/) |  |  |/ \
+     | | |_/|/ | |_/\/|_/|_/|_/ \/      | | |___|    |/| \_/\/|_/|__/
+                                                                /|
+                                                                \|
 A semantic markup framework for meeting minutes
 
 ## Idea
 
-* Write your meeting minutes in Markdown, using semantic markup for certain things
-* Use `minutes-m4rkdown` to convert your minutes to:
+* Write your meeting minutes in your favourite (text-based) markup language, using semantic markup for certain things
+* Use `minutes-m4rkup` to convert your markup to:
     * human-readable formats like Markdown, PDF, HTML, …, resulting in consistent formatting
+        * (currently, only Markdown is supported)
     * machine-readable formats like JSON, CSV, XML, …
 
 See the `tests/` folder for some examples.
