@@ -57,7 +57,7 @@ A resolution. The non-public variant gets redacted in public material.
 Parameters:
 
 1. Reference number,
-2. Vote information, use `VOTE_ADOPTED()`/`VOTE/AGAINST`
+2. Vote information, use `VOTE_ADOPTED()`/`VOTE_AGAINST()`
 3. Short text of the resolution,
 4. Allocated money, if any (optional)
 5. Further text (optional)
