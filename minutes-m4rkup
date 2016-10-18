@@ -11,9 +11,9 @@ if [ $# -lt 1 ]; then
 fi
 
 input="$1"
-render_markdown_private=1
+render_markdown_nonpublic=1
 render_markdown_public=1
-render_json_private=1
+render_json_nonpublic=1
 render_json_public=1
 
 # TODO: parse options
