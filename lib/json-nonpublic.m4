@@ -22,30 +22,30 @@ define([_RESOLUTION_template], [{ "type": "resolution"[,] "public": $1[,]dnl
  "ref": "[$]1"[,] "vote": [$]2[,] "text": "[$]3"[,] "allocated_money":dnl
  ifelse([[$]4], [], ["0€"], ["[$]4"])[,] "notes": "[$]5" }])
 dnl
-define([RESOLUTION_NONPUBLIC], [divert(0)dnl
+define([RESOLUTION], [divert(0)dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _RESOLUTION_template([false])
  [divert(1)])dnl
-define([RESOLUTION], [divert(0)dnl
+define([RESOLUTION_PUBLIC], [divert(0)dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _RESOLUTION_template([true])
  [divert(1)])dnl
 dnl
 define([_TODO_template], [{ "type": "todo"[,] "public": $1[,] "done": $2[,] dnl
 "ref": "$[1]"[,] "assigned": "$[2]"[,] "text": "$[3]"[,] "notes": "$[4]" }])dnl
-define([TODO], [divert(0)dnl
+define([TODO_PUBLIC], [divert(0)dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _TODO_template([true], [false])dnl
 [divert(1)]])dnl
-define([DONE], [divert(0)dnl
+define([DONE_PUBLIC], [divert(0)dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _TODO_template([true], [true])dnl
 [divert(1)]])dnl
-define([TODO_NONPUBLIC], [divert(0)dnl
+define([TODO], [divert(0)dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _TODO_template([false], [false])dnl
 [divert(1)]])dnl
-define([DONE_NONPUBLIC], [divert(0)dnl
+define([DONE], [divert(0)dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _TODO_template([false], [true])dnl
 [divert(1)]])dnl

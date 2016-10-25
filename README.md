@@ -51,7 +51,7 @@ Parameters:
 3. Number of abstentions
 
 
-### `RESOLUTION()`, `RESOLUTION_NONPUBLIC()`
+### `RESOLUTION()`, `RESOLUTION_PUBLIC()`
 A resolution. The non-public variant gets redacted in public material.
 
 Parameters:
@@ -63,7 +63,7 @@ Parameters:
 5. Further text (optional)
 
 
-### `TODO()`, `DONE()`, `TODO_NONPUBLIC()`, `DONE_NONPUBLIC()`
+### `TODO()`, `DONE()`, `TODO_PUBLIC()`, `DONE_PUBLIC()`
 To Do List items. Use `TODO` to signal that an item needs action, and `DONE` to
 signal that an item was done or is not longer valid.  Non-public variants get
 redacted in public documents.
