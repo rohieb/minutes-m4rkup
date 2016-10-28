@@ -5,18 +5,6 @@ usage() {
 	echo "Usage: minutes-m4rkup <input>"
 }
 
-if [ $# -lt 1 ]; then
-	usage
-	exit 1
-fi
-
-input="$1"
-render_markdown_nonpublic=1
-render_markdown_public=1
-render_json_nonpublic=1
-render_json_public=1
-
-# TODO: parse options
 
 # params: <output-file> <m4-lib-file> <input-files...>
 render() {
@@ -25,15 +13,35 @@ render() {
 	cat "$@" | m4 -I "$LIBPATH" > "$outfile"
 }
 
-for format in markdown json; do
-	for visibility in public nonpublic; do
-		varref="render_${format}_${visibility}"
-		eval "do_format=\$$varref"
-		if [ -n "$do_format" ]; then
-			output=$(echo $input | sed 's/^\(.*\)\.[^.]\+/\1/')
+main() {
+	if [ $# -lt 1 ]; then
+		usage
+		exit 1
+	fi
 
-			render "${output}-${visibility}.${format}" \
-				"$LIBPATH/${format}-${visibility}.m4" "$input"
-		fi
+	input="$1"
+	render_markdown_nonpublic=1
+	render_markdown_public=1
+	render_json_nonpublic=1
+	render_json_public=1
+
+	# TODO: parse options
+
+	for format in markdown json; do
+		for visibility in public nonpublic; do
+			varref="render_${format}_${visibility}"
+			eval "do_format=\$$varref"
+			if [ -n "$do_format" ]; then
+				output=$(echo $input | sed 's/^\(.*\)\.[^.]\+/\1/')
+
+				render "${output}-${visibility}.${format}" \
+					"$LIBPATH/${format}-${visibility}.m4" "$input"
+			fi
+		done
 	done
-done
+}
+
+# don't do things when being source'd
+if [ "`basename $0`" = "minutes-m4rkup" ]; then
+	main "$@"
+fi
