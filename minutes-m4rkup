@@ -1,16 +1,31 @@
-#!/bin/sh
-LIBPATH="./lib"
+#!/bin/bash
+SELF="$(type -p $0)"
+BINDIR="$(dirname $SELF)"
+LIBDIRS="/usr/lib/minutes-m4rkup /usr/local/lib/minutes-m4rkup $BINDIR/lib"
+M4_LIBDIRS="$(echo $LIBDIRS | sed 's/ / -I /g')"
 
 usage() {
 	echo "Usage: minutes-m4rkup <input>"
 }
 
+# look in all library dirs for a file named $1
+# output: existing files in order of increasing priority
+# Caveats: It's 2016, but this does not support path names which include spaces.
+get_lib_files() {
+	local files=""
+	for d in $LIBDIRS; do
+		if [ -r "$d/$1" ]; then
+			files="$files $d/$1"
+		fi
+	done
+	echo "$files"
+}
 
 # params: <output-file> <m4-lib-file> <input-files...>
 render() {
 	local outfile="$1"
 	shift
-	cat "$@" | m4 -I "$LIBPATH" > "$outfile"
+	cat "$@" | m4 -I $M4_LIBDIRS > "$outfile"
 }
 
 main() {
@@ -34,8 +49,9 @@ main() {
 			if [ -n "$do_format" ]; then
 				output=$(echo $input | sed 's/^\(.*\)\.[^.]\+/\1/')
 
+				local libfiles="$(get_lib_files ${format}-${visibility}.m4)"
 				render "${output}-${visibility}.${format}" \
-					"$LIBPATH/${format}-${visibility}.m4" "$input"
+					$libfiles "$input"
 			fi
 		done
 	done
