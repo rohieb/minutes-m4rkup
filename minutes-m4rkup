@@ -20,7 +20,9 @@ render_json_public=1
 
 # params: <output-file> <m4-lib-file> <input-files...>
 render() {
-	cat "$@" | m4 -I "$LIBPATH" > "$1"
+	local outfile="$1"
+	shift
+	cat "$@" | m4 -I "$LIBPATH" > "$outfile"
 }
 
 for format in markdown json; do
