@@ -5,6 +5,12 @@
                                                                 \|
 A semantic markup framework for meeting minutes
 
+## A Word of Caution
+
+Please note that this software is in early alpha phase, and there will most
+probably be breaking changes to the markup. If updating your documents doesn't
+bother you, go ahead. In any case, I would love to get feedback on the ideas :-)
+
 ## Idea
 
 * Write your meeting minutes in your favourite (text-based) markup language, using semantic markup for certain things
