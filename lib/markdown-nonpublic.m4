@@ -30,6 +30,6 @@ define([TODO],        _TODO_template([MARKDOWN_TEXT_TODO])_NOTES_template(4))dnl
 define([DONE_PUBLIC], [[~~]]_TODO_template([MARKDOWN_TEXT_DONE])[[~~]]_NOTES_template(4))dnl
 define([DONE],        [[~~]]_TODO_template([MARKDOWN_TEXT_DONE])[[~~]]_NOTES_template(4))dnl
 dnl
-define([END], [* MARKDOWN_TEXT_END $1])dnl
+define([END], [MARKDOWN_TEXT_END $1])dnl
 dnl
 dnl vim: set ft=m4 tw=80 et sw=1 ts=1 sts=1:
