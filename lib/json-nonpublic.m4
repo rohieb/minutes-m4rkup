@@ -2,18 +2,25 @@ define(OPENING_BRACKET, `changequote()[changequote([,])')dnl
 define(CLOSING_BRACKET, `changequote()]changequote([,])')dnl
 changequote([,])dnl
 dnl
-define(MEETING_MINUTES, [divert(0)dnl
+dnl Some helpers to get our diversions in order:
+dnl stream 0:  everything that is written to the JSON file
+dnl stream -1: trash – everything outside of our markup.
+define([divnum_json], 0)dnl
+define([divert_to_json],  [divert(divnum_json)])dnl
+define([divert_to_trash], [divert(-1)])dnl
+dnl
+define(MEETING_MINUTES, [divert_to_json()dnl
  { "metadata": { "type": "$1", "date": "$2", "start_time": "$3",dnl
  "attendants": "$4", "absentees": "$5", "keeper_of_minutes": "$6" },
- divert(1)])dnl
+ divert_to_trash()])dnl
 dnl
-define(VOTE_ADOPTED, [divert(0)dnl
+define(VOTE_ADOPTED, [divert_to_json()dnl
  { "approved": true[,]  "pro": $1[,] "contra": $2[,] "abstain": $3 }dnl
- divert(1)])dnl
+ divert_to_trash()])dnl
 dnl
-define(VOTE_REJECTED, [divert(0)dnl
+define(VOTE_REJECTED, [divert_to_json()dnl
  { "approved": false[,] "pro": $1[,] "contra": $2[,] "abstain": $3 }dnl
- divert(1)])dnl
+ divert_to_trash()])dnl
 dnl
 dnl These get redefined later, we only need them once
 define([_CONTENT_array_start],     ["content": OPENING_BRACKET])dnl
@@ -22,39 +29,39 @@ define([_RESOLUTION_template], [{ "type": "resolution"[,] "public": $1[,]dnl
  "ref": "[$]1"[,] "vote": [$]2[,] "text": "[$]3"[,] "allocated_money":dnl
  ifelse([[$]4], [], ["0€"], ["[$]4"])[,] "notes": "[$]5" }])
 dnl
-define([RESOLUTION], [divert(0)dnl
+define([RESOLUTION], [divert_to_json()dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _RESOLUTION_template([false])
- [divert(1)])dnl
-define([RESOLUTION_PUBLIC], [divert(0)dnl
+ [divert_to_trash()])dnl
+define([RESOLUTION_PUBLIC], [divert_to_json()dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _RESOLUTION_template([true])
- [divert(1)])dnl
+ [divert_to_trash()])dnl
 dnl
 define([_TODO_template], [{ "type": "todo"[,] "public": $1[,] "done": $2[,] dnl
 "ref": "$[1]"[,] "assigned": "$[2]"[,] "text": "$[3]"[,] "notes": "$[4]" }])dnl
-define([TODO_PUBLIC], [divert(0)dnl
+define([TODO_PUBLIC], [divert_to_json()dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _TODO_template([true], [false])dnl
-[divert(1)]])dnl
-define([DONE_PUBLIC], [divert(0)dnl
+[divert_to_trash()]])dnl
+define([DONE_PUBLIC], [divert_to_json()dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _TODO_template([true], [true])dnl
-[divert(1)]])dnl
-define([TODO], [divert(0)dnl
+[divert_to_trash()]])dnl
+define([TODO], [divert_to_json()dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _TODO_template([false], [false])dnl
-[divert(1)]])dnl
-define([DONE], [divert(0)dnl
+[divert_to_trash()]])dnl
+define([DONE], [divert_to_json()dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
  _TODO_template([false], [true])dnl
-[divert(1)]])dnl
+[divert_to_trash()]])dnl
 dnl
 dnl Must be last call in the document!
-define(END, [divert(0)
+define(END, [divert_to_json()
  CLOSING_BRACKET, "end_time": "$1" }
- divert(-1)undivert])dnl
+divert_to_trash()undivert])dnl
 dnl
 dnl Don't output anything except we say so:
-divert(1)dnl
+divert_to_trash()dnl
 dnl vim: set ft=m4 tw=80 et sw=1 ts=1 sts=1:
