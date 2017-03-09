@@ -1,7 +1,7 @@
 #!/bin/bash
 SELF="$(type -p $0)"
 BINDIR="$(dirname $SELF)"
-LIBDIRS="/usr/lib/minutes-m4rkup /usr/local/lib/minutes-m4rkup $BINDIR/lib"
+LIBDIRS="$BINDIR/lib /usr/local/lib/minutes-m4rkup /usr/lib/minutes-m4rkup"
 M4_LIBDIRS="$(echo $LIBDIRS | sed 's/ / -I /g')"
 
 usage() {
