@@ -46,6 +46,30 @@ Parameters:
 1. Closing time of the meeting
 
 
+### `CONFIDENTIAL()`, `REPLACE_WITH()`, `END_CONFIDENTIAL()`
+Specify a text block that should only be rendered in confidential versions of
+the document, and, optionally, its replacement text in public versions.
+
+Takes no parameters.
+
+Example:
+
+``` m4
+CONFIDENTIAL()dnl
+* TODO(T1, Eve, Make Plans for World Domination)
+REPLACE_WITH()dnl
+* TODO(T1, Eve, Buy some more cookies)
+END_CONFIDENTIAL()dnl
+```
+
+Or, without a replacement, the block is simply stripped in public versions:
+``` m4
+CONFIDENTIAL()dnl
+* TODO(T1, Eve, Make Plans for World Domination)
+END_CONFIDENTIAL()dnl
+```
+
+
 ### `VOTE_ADOPTED()`, `VOTE_REJECTED()`
 Vote information. Use `VOTE_ADOPTED` if the overall result was positive and the
 motion being voted for was adopted, and `VOTE_REJECTED` if it was rejected.
@@ -57,8 +81,8 @@ Parameters:
 3. Number of abstentions
 
 
-### `RESOLUTION()`, `RESOLUTION_PUBLIC()`
-A resolution. The non-public variant gets redacted in public material.
+### `RESOLUTION()`
+A resolution.
 
 Parameters:
 
@@ -69,10 +93,9 @@ Parameters:
 5. Further text (optional)
 
 
-### `TODO()`, `DONE()`, `TODO_PUBLIC()`, `DONE_PUBLIC()`
+### `TODO()`, `DONE()`
 To Do List items. Use `TODO` to signal that an item needs action, and `DONE` to
-signal that an item was done or is not longer valid.  Non-public variants get
-redacted in public documents.
+signal that an item was done or is no longer valid.
 
 Parameters:
 

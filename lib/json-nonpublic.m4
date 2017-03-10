@@ -2,11 +2,17 @@ define(OPENING_BRACKET, `changequote()[changequote([,])')dnl
 define(CLOSING_BRACKET, `changequote()]changequote([,])')dnl
 changequote([,])dnl
 dnl
+define([omitted],         )dnl determines whether we want to trash this block
+define([is_public], [true])dnl this gets written to the JSON
+define([CONFIDENTIAL],     [define([is_public],[false])])dnl
+define([REPLACE_WITH],     [define([omitted],1)])dnl
+define([END_CONFIDENTIAL], [define([omitted],[])define([is_public],[true])])dnl
+dnl
 dnl Some helpers to get our diversions in order:
 dnl stream 0:  everything that is written to the JSON file
 dnl stream -1: trash – everything outside of our markup.
 define([divnum_json], 0)dnl
-define([divert_to_json],  [divert(divnum_json)])dnl
+define([divert_to_json],  [ifelse(omitted,[],[divert(divnum_json)])])dnl
 define([divert_to_trash], [divert(-1)])dnl
 dnl
 define(MEETING_MINUTES, [divert_to_json()dnl
@@ -31,31 +37,19 @@ define([_RESOLUTION_template], [{ "type": "resolution"[,] "public": $1[,]dnl
 dnl
 define([RESOLUTION], [divert_to_json()dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
- _RESOLUTION_template([false])
- [divert_to_trash()])dnl
-define([RESOLUTION_PUBLIC], [divert_to_json()dnl
- _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
- _RESOLUTION_template([true])
+ _RESOLUTION_template([[is_public]])
  [divert_to_trash()])dnl
 dnl
 define([_TODO_template], [{ "type": "todo"[,] "public": $1[,] "done": $2[,] dnl
 "ref": "$[1]"[,] "assigned": "$[2]"[,] "text": "$[3]"[,] "notes": "$[4]" }])dnl
-define([TODO_PUBLIC], [divert_to_json()dnl
- _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
- _TODO_template([true], [false])dnl
-[divert_to_trash()]])dnl
-define([DONE_PUBLIC], [divert_to_json()dnl
- _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
- _TODO_template([true], [true])dnl
-[divert_to_trash()]])dnl
 define([TODO], [divert_to_json()dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
- _TODO_template([false], [false])dnl
-[divert_to_trash()]])dnl
+ _TODO_template([[is_public]], [false])dnl
+[divert_to_trash()])dnl
 define([DONE], [divert_to_json()dnl
  _CONTENT_array_start(define([_CONTENT_array_start],[,]))] dnl
- _TODO_template([false], [true])dnl
-[divert_to_trash()]])dnl
+ _TODO_template([[is_public]], [true])dnl
+[divert_to_trash()])dnl
 dnl
 dnl Must be last call in the document!
 define(END, [divert_to_json()

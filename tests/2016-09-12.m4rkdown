@@ -3,6 +3,8 @@ MEETING_MINUTES(Board meeting, 2016-09-01, 20:00,
 
 Non-Public Part
 ---------------
+
+CONFIDENTIAL()dnl
 * RESOLUTION(Resolution 2016-00, VOTE_ADOPTED(4,0,0), World Domination)
 * TODO(T2016-03, Adam Ant, Build Doomsday Machine)
 * Recent TODOs:
@@ -10,25 +12,29 @@ Non-Public Part
 		* They make nice, cheap LAZZZORS
 		* LAZZZORS are needed for Doomsday Machine])
 	* DONE(T2016-01, Beatrice Bull, Buy some space rockets)
+REPLACE_WITH()dnl
+(redacted because of reasons)
+END_CONFIDENTIAL()dnl
+
 
 Public Part
 -----------
 
 * We thought about things for a while.
-* RESOLUTION_PUBLIC(Resolution 2016-01, VOTE_REJECTED(0,3,1), Buy a new house, 390[,]000€)
-* TODO_PUBLIC(T2016-01, , Find out how to get more space, [
+* RESOLUTION(Resolution 2016-01, VOTE_REJECTED(0,3,1), Buy a new house, 390[,]000€)
+* TODO(T2016-01, , Find out how to get more space, [
 	1. We need more space for our workshops.
 	2. Space is already too cluttered.
 	3. Maybe add more shelves for organizing?
 	4. …
 	5. PROFIT!])
-* RESOLUTION_PUBLIC(Resolution 2016-02, VOTE_ADOPTED(2,1,1), Do something about the roof, [
+* RESOLUTION(Resolution 2016-02, VOTE_ADOPTED(2,1,1), Do something about the roof, [
 	* Pool on the roof must have sprung a leak])
-* RESOLUTION_PUBLIC(Resolution 2016-03, VOTE_REJECTED(0,3,1), Merge with Evil Corp, [], [
+* RESOLUTION(Resolution 2016-03, VOTE_REJECTED(0,3,1), Merge with Evil Corp, [], [
 	* We are the Good Guys™.
 	* We cannot let the Evil Guys win.])
 * More things to come.
 * Recent TODOs:
-	* DONE_PUBLIC(T2015-09, Adam Ant, Write a templating system for Markdown)
+	* DONE(T2015-09, Adam Ant, Write a templating system for Markdown)
 
 END(21:59)
