@@ -35,15 +35,15 @@ main() {
 	fi
 
 	input="$1"
-	render_markdown_nonpublic=1
+	render_markdown_confidential=1
 	render_markdown_public=1
-	render_json_nonpublic=1
+	render_json_confidential=1
 	render_json_public=1
 
 	# TODO: parse options
 
 	for format in markdown json; do
-		for visibility in public nonpublic; do
+		for visibility in public confidential; do
 			varref="render_${format}_${visibility}"
 			eval "do_format=\$$varref"
 			if [ -n "$do_format" ]; then
