@@ -6,6 +6,7 @@ define([MARKDOWN_TEXT_ABSENT], [Absent])dnl
 define([MARKDOWN_TEXT_MINUTE_TAKER], [Minute taker])dnl
 define([MARKDOWN_TEXT_ADOPTED], [✔])dnl
 define([MARKDOWN_TEXT_REJECTED], [✘])dnl
+define([MARKDOWN_TEXT_CONSENSUS], [consensus])dnl
 define([MARKDOWN_TEXT_END], [Ending at])dnl
 define([MARKDOWN_TEXT_TODO], [[TODO]])dnl be sure not to recurse
 define([MARKDOWN_TEXT_DONE], [[DONE]])dnl

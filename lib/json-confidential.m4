@@ -20,19 +20,27 @@ define(MEETING_MINUTES, [divert_to_json()dnl
  "$4", "attendants": "$5", "absentees": "$6", "keeper_of_minutes": "$7" },
  divert_to_trash()])dnl
 dnl
+define(CONSENSUS_ADOPTED, [divert_to_json()dnl
+ { "approved": true[,] "type":"consensus" }dnl
+ divert_to_trash()])dnl
+dnl
+define(CONSENSUS_REJECTED, [divert_to_json()dnl
+ { "approved": false[,] "type":"consensus" }dnl
+ divert_to_trash()])dnl
+dnl
 define(VOTE_ADOPTED, [divert_to_json()dnl
- { "approved": true[,]  "pro": $1[,] "contra": $2[,] "abstain": $3 }dnl
+ { "approved": true[,] "type":"vote"[,] "pro": $1[,] "contra": $2[,] "abstain": $3 }dnl
  divert_to_trash()])dnl
 dnl
 define(VOTE_REJECTED, [divert_to_json()dnl
- { "approved": false[,] "pro": $1[,] "contra": $2[,] "abstain": $3 }dnl
+ { "approved": false[,] "type":"vote"[,] "pro": $1[,] "contra": $2[,] "abstain": $3 }dnl
  divert_to_trash()])dnl
 dnl
 dnl These get redefined later, we only need them once
 define([_CONTENT_array_start],     ["content": OPENING_BRACKET])dnl
 define([_CONTENT_array_delimiter], [,])dnl
 define([_RESOLUTION_template], [{ "type": "resolution"[,] "public": $1[,]dnl
- "ref": "[$]1"[,] "vote": [$]2[,] "text": "[$]3"[,] "allocated_money":dnl
+ "ref": "[$]1"[,] "reason": [$]2[,] "text": "[$]3"[,] "allocated_money":dnl
  ifelse([[$]4], [], ["0€"], ["[$]4"])[,] "notes": "[$]5" }])
 dnl
 define([RESOLUTION], [divert_to_json()dnl

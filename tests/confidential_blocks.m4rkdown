@@ -1,7 +1,7 @@
 MEETING_MINUTES(Test)
 
 TODO(T1,, First General To Do item)
-RESOLUTION(R1, VOTE_ADOPTED(0,0,0), First General Resolution)
+RESOLUTION(R1, CONSENSUS_REJECTED, First General Resolution)
 
 CONFIDENTIAL()dnl
 	TODO(T2,, Confidential-only To Do item)
@@ -16,7 +16,7 @@ END_CONFIDENTIAL()dnl
 CONFIDENTIAL()dnl
 	TODO(T4,, Confidential-only To Do item without replacement)
 	DONE(T5,, Confidential-only Done item without replacement)
-	RESOLUTION(R3, VOTE_ADOPTED(0,0,0), Confidential-only Resolution without replacement)
+	RESOLUTION(R3, CONSENSUS_ADOPTED, Confidential-only Resolution without replacement)
 
 END_CONFIDENTIAL()dnl
 TODO(T6,, Second General To Do item)

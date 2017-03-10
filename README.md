@@ -71,6 +71,14 @@ END_CONFIDENTIAL()dnl
 ```
 
 
+### `CONSENSUS_ADOPTED()`, `CONSENSUS_REJECTED()`
+Record a motion that was not voted for, but there was consensus nevertheless.
+Use `CONSENSUS_ADOPTED` if the overall result was positive and the motion was
+adopted, and `CONSENSUS_REJECTED` if it was rejected.
+
+No Parameters.
+
+
 ### `VOTE_ADOPTED()`, `VOTE_REJECTED()`
 Vote information. Use `VOTE_ADOPTED` if the overall result was positive and the
 motion being voted for was adopted, and `VOTE_REJECTED` if it was rejected.
@@ -88,7 +96,8 @@ A resolution.
 Parameters:
 
 1. Reference number,
-2. Vote information, use `VOTE_ADOPTED()`/`VOTE_AGAINST()`
+2. Vote information, use any of `VOTE_ADOPTED`, `VOTE_REJECTED`,
+	`CONSENSUS_ADOPTED`, `CONSENSUS_REJECTED`
 3. Short text of the resolution,
 4. Allocated money, if any (optional)
 5. Further text (optional)
