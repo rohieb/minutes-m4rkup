@@ -33,9 +33,10 @@ Parameters:
 1. Type of the meeting (e.g., board meeting, general meeting, etc.)
 2. Date of the meeting
 3. Starting time,
-4. (List of) attending people
-5. (List of) absent people, if any
-6. Name of minute taker
+4. Place of the meeting
+5. (List of) attending people
+6. (List of) absent people, if any
+7. Name of minute taker
 
 
 ### `END()`

@@ -16,8 +16,8 @@ define([divert_to_json],  [ifelse(omitted,[],[divert(divnum_json)])])dnl
 define([divert_to_trash], [divert(-1)])dnl
 dnl
 define(MEETING_MINUTES, [divert_to_json()dnl
- { "metadata": { "type": "$1", "date": "$2", "start_time": "$3",dnl
- "attendants": "$4", "absentees": "$5", "keeper_of_minutes": "$6" },
+ { "metadata": { "type": "$1", "date": "$2", "start_time": "$3", "place":dnl
+ "$4", "attendants": "$5", "absentees": "$6", "keeper_of_minutes": "$7" },
  divert_to_trash()])dnl
 dnl
 define(VOTE_ADOPTED, [divert_to_json()dnl
