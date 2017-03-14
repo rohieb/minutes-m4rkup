@@ -16,10 +16,21 @@ bother you, go ahead. In any case, I would love to get feedback on the ideas :-)
 * Write your meeting minutes in your favourite (text-based) markup language, using semantic markup for certain things
 * Use `minutes-m4rkup` to convert your markup to:
     * human-readable formats like Markdown, PDF, HTML, …, resulting in consistent formatting
-        * (currently, only Markdown is supported)
     * machine-readable formats like JSON, CSV, XML, …
+        * for a comprehensive list, see [Input and Output Formats](#input-and-output-formats)
 
 See the `tests/` folder for some examples.
+
+## Input and Output Formats
+
+Currently supported input formats are:
+
+* Markdown with M4 macros
+
+Currently supported output formats are:
+
+* Markdown
+* JSON
 
 
 ## Macro Reference
