@@ -13,24 +13,24 @@ define(«divnum_json», 0)dnl
 define(«divert_to_json»,  «ifelse(omitted,«»,«divert(divnum_json)»)»)dnl
 define(«divert_to_trash», «divert(-1)»)dnl
 dnl
-define(MEETING_MINUTES, «divert_to_json()dnl
+define(«MEETING_MINUTES», «divert_to_json()dnl
  { "metadata": { "type": "$1", "date": "$2", "start_time": "$3", "place":dnl
  "$4", "attendants": "$5", "absentees": "$6", "keeper_of_minutes": "$7" },
  divert_to_trash()»)dnl
 dnl
-define(CONSENSUS_ADOPTED, «divert_to_json()dnl
+define(«CONSENSUS_ADOPTED», «divert_to_json()dnl
  { "approved": true«,» "type":"consensus" }dnl
  divert_to_trash()»)dnl
 dnl
-define(CONSENSUS_REJECTED, «divert_to_json()dnl
+define(«CONSENSUS_REJECTED», «divert_to_json()dnl
  { "approved": false«,» "type":"consensus" }dnl
  divert_to_trash()»)dnl
 dnl
-define(VOTE_ADOPTED, «divert_to_json()dnl
+define(«VOTE_ADOPTED», «divert_to_json()dnl
  { "approved": true«,» "type":"vote"«,» "pro": $1«,» "contra": $2«,» "abstain": $3 }dnl
  divert_to_trash()»)dnl
 dnl
-define(VOTE_REJECTED, «divert_to_json()dnl
+define(«VOTE_REJECTED», «divert_to_json()dnl
  { "approved": false«,» "type":"vote"«,» "pro": $1«,» "contra": $2«,» "abstain": $3 }dnl
  divert_to_trash()»)dnl
 dnl
@@ -58,7 +58,7 @@ define(«DONE», «divert_to_json()dnl
 «divert_to_trash()»)dnl
 dnl
 dnl Must be last call in the document!
-define(END, «divert_to_json()
+define(«END», «divert_to_json()
  ], "end_time": "$1" }
 divert_to_trash()undivert»)dnl
 dnl
