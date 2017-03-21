@@ -10,3 +10,4 @@ define(«MARKDOWN_TEXT_CONSENSUS», «consensus»)dnl
 define(«MARKDOWN_TEXT_END», «Ending at»)dnl
 define(«MARKDOWN_TEXT_TODO», ««TODO»»)dnl be sure not to recurse
 define(«MARKDOWN_TEXT_DONE», ««DONE»»)dnl
+dnl vim: set ft=m4rkup tw=80 et sw=1 ts=1 sts=1:

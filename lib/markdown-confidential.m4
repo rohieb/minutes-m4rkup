@@ -34,4 +34,4 @@ define(«END_CONFIDENTIAL», «divert(0)»)dnl
 dnl
 define(«END», «MARKDOWN_TEXT_END $1»)dnl
 dnl
-dnl vim: set ft=m4 tw=80 et sw=1 ts=1 sts=1:
+dnl vim: set ft=m4rkup tw=80 et sw=1 ts=1 sts=1:

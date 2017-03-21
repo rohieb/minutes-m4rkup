@@ -64,4 +64,4 @@ divert_to_trash()undivert»)dnl
 dnl
 dnl Don't output anything except we say so:
 divert_to_trash()dnl
-dnl vim: set ft=m4 tw=80 et sw=1 ts=1 sts=1:
+dnl vim: set ft=m4rkup tw=80 et sw=1 ts=1 sts=1:

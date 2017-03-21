@@ -4,3 +4,4 @@ define(«CONFIDENTIAL»,    «define(«is_public»,«false»)define(«omitted»,
 define(«REPLACE_WITH»,    «define(«omitted»,«»)»)dnl
 dnl note: CONFIDENTIAL blocks can leave out the REPLACE_WITH
 define(«END_CONFIDENTIAL»,«define(«omitted»,«»)define(«is_public»,«true»)»)dnl
+dnl vim: set ft=m4rkup tw=80 et sw=1 ts=1 sts=1:
