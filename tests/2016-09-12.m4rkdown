@@ -1,5 +1,5 @@
 MEETING_MINUTES(Board meeting, 2016-09-01, 20:00, Rectangular Office,
-	[Adam Ant, Henrietta Horse, Beatrice Bull], [Ephraim Elephant], [Adam Ant])
+	«Adam Ant, Henrietta Horse, Beatrice Bull», «Ephraim Elephant», «Adam Ant»)
 
 Non-Public Part
 ---------------
@@ -8,9 +8,9 @@ CONFIDENTIAL()dnl
 * RESOLUTION(Resolution 2016-00, VOTE_ADOPTED(4,0,0), World Domination)
 * TODO(T2016-03, Adam Ant, Build Doomsday Machine)
 * Recent TODOs:
-	* TODO(T2016-02, , Try out LAZZZORs from Evil Corp., [
+	* TODO(T2016-02, , Try out LAZZZORs from Evil Corp., «
 		* They make nice, cheap LAZZZORS
-		* LAZZZORS are needed for Doomsday Machine])
+		* LAZZZORS are needed for Doomsday Machine»)
 	* DONE(T2016-01, Beatrice Bull, Buy some space rockets)
 REPLACE_WITH()dnl
 (redacted because of reasons)
@@ -21,18 +21,18 @@ Public Part
 -----------
 
 * We thought about things for a while.
-* RESOLUTION(Resolution 2016-01, VOTE_REJECTED(0,3,1), Buy a new house, 390[,]000€)
-* TODO(T2016-01, , Find out how to get more space, [
+* RESOLUTION(Resolution 2016-01, VOTE_REJECTED(0,3,1), Buy a new house, 390«,»000€)
+* TODO(T2016-01, , Find out how to get more space, «
 	1. We need more space for our workshops.
 	2. Space is already too cluttered.
 	3. Maybe add more shelves for organizing?
 	4. …
-	5. PROFIT!])
-* RESOLUTION(Resolution 2016-02, CONSENSUS_ADOPTED, Do something about the roof, [
-	* Pool on the roof must have sprung a leak])
-* RESOLUTION(Resolution 2016-03, CONSENSUS_REJECTED, Merge with Evil Corp, [], [
+	5. PROFIT!»)
+* RESOLUTION(Resolution 2016-02, CONSENSUS_ADOPTED, Do something about the roof, «
+	* Pool on the roof must have sprung a leak»)
+* RESOLUTION(Resolution 2016-03, CONSENSUS_REJECTED, Merge with Evil Corp, «», «
 	* We are the Good Guys™.
-	* We cannot let the Evil Guys win.])
+	* We cannot let the Evil Guys win.»)
 * More things to come.
 * Recent TODOs:
 	* DONE(T2015-09, Adam Ant, Write a templating system for Markdown)

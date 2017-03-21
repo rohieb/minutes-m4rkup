@@ -35,6 +35,13 @@ Currently supported output formats are:
 
 ## Macro Reference
 
+The default quoting characters for M4 are already used otherwise in the input
+formats.  To prevent weirdness and make writing meeting minutes easier,
+`minutes-m4rkup` redefines the M4 quoting characters as `«` (opening quote) and
+`»` (closing quote).  If you should need these characters in any case, you can
+always get a literal `«` or `»` by using the macros `LITERAL_QUOTE_OPEN` and
+`LITERAL_QUOTE_CLOSE` instead.
+
 ### `MEETING_MINUTES()`
 Gives general information about a meeting, also does initialisation and set-up.
 Must be the first macro call in a document.
