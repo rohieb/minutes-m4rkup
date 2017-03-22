@@ -8,26 +8,6 @@ usage() {
 	echo "Usage: minutes-m4rkup <input>"
 }
 
-# look in all library dirs for a file named $1
-# output: existing files in order of increasing priority
-# Caveats: It's 2016, but this does not support path names which include spaces.
-get_lib_files() {
-	local files=""
-	for d in $LIBDIRS; do
-		if [ -r "$d/$1" ]; then
-			files="$files $d/$1"
-		fi
-	done
-	echo "$files"
-}
-
-# params: <output-file> <m4-lib-file> <input-files...>
-render() {
-	local outfile="$1"
-	shift
-	cat "$@" | m4 -I $M4_LIBDIRS > "$outfile"
-}
-
 main() {
 	if [ $# -lt 1 ]; then
 		usage
@@ -47,11 +27,16 @@ main() {
 			varref="render_${format}_${visibility}"
 			eval "do_format=\$$varref"
 			if [ -n "$do_format" ]; then
+				# trim the extension off the input filename
 				output=$(echo $input | sed 's/^\(.*\)\.[^.]\+/\1/')
 
-				local libfiles="$(get_lib_files ${format}-${visibility}.m4)"
-				render "${output}-${visibility}.${format}" \
-					$libfiles "$input"
+				set -x
+				# Note: m4 finds bootstrap.m4 in its include paths
+				cat "$input" | m4 -I $M4_LIBDIRS \
+					-DFORMAT=$format -DVISIBILITY=$visibility \
+					bootstrap.m4 - \
+					> $output-$visibility.$format
+				set +x
 			fi
 		done
 	done
