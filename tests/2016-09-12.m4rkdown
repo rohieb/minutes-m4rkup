@@ -5,6 +5,7 @@ Non-Public Part
 ---------------
 
 CONFIDENTIAL()dnl
+
 * RESOLUTION(Resolution 2016-00, VOTE_ADOPTED(4,0,0), World Domination)
 * TODO(T2016-03, Adam Ant, Build Doomsday Machine)
 * Recent TODOs:
@@ -12,6 +13,7 @@ CONFIDENTIAL()dnl
 		* They make nice, cheap LAZZZORS
 		* LAZZZORS are needed for Doomsday Machine»)
 	* DONE(T2016-01, Beatrice Bull, Buy some space rockets)
+
 REPLACE_WITH()dnl
 (redacted because of reasons)
 END_CONFIDENTIAL()dnl
@@ -28,7 +30,7 @@ Public Part
 	3. Maybe add more shelves for organizing?
 	4. …
 	5. PROFIT!»)
-* RESOLUTION(Resolution 2016-02, CONSENSUS_ADOPTED, Do something about the roof, «
+* RESOLUTION(Resolution 2016-02, CONSENSUS_ADOPTED, Do something about the roof,, «
 	* Pool on the roof must have sprung a leak»)
 * RESOLUTION(Resolution 2016-03, CONSENSUS_REJECTED, Merge with Evil Corp, «», «
 	* We are the Good Guys™.
