@@ -131,3 +131,30 @@ Parameters:
 2. Assigned person
 3. Descriptive text
 4. Additional notes (optional)
+
+
+## Enhancing m4rkup
+
+Before reading your input, `minutes-m4rkup` will look for additional files in
+the following locations, and will include them in order:
+
+  * `$HOME/.minutes-m4rkup.m4`
+  * `./.minutes-m4rkup.m4` (relative to the input file)
+
+You can drop your own M4 macros into those files. For example, for one project I
+define a `WIKI` macro in `./.minutes-m4rkup.m4` as following:
+
+``` m4
+dnl WIKI(pagename[, optional link title]): link to wiki pages
+define(«MEDIAWIKI_C_WIKI», «ifelse($2,,«[[$1]]»,«[[$1|$2]]»)»)dnl
+define(«MEDIAWIKI_P_WIKI», «MEDIAWIKI_C_WIKI($1)»)dnl
+define(«MARKDOWN_C_WIKI», «ifelse($2,,«[$1]»,«[$2]»)(https://stratum0.org/wiki/$1)»)dnl
+define(«MARKDOWN_P_WIKI», «MARKDOWN_C_WIKI($1)»)dnl
+define(«JSON_P_WIKI», «»)dnl M4 will complain if this is not defined
+define(«JSON_C_WIKI», «»)dnl
+define(«WIKI», F_CODE«_»V_CODE«_WIKI($@)»)dnl
+```
+
+`F_CODE` contains the respective output format to be rendered, in uppercase, and
+`V_CODE` contains a `P` for the public version, or `C` for the confidential
+version.

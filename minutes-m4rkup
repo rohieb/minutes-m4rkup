@@ -3,9 +3,24 @@ SELF="$(type -p $0)"
 BINDIR="$(dirname $SELF)"
 LIBDIRS="$BINDIR/lib /usr/local/lib/minutes-m4rkup /usr/lib/minutes-m4rkup"
 M4_LIBDIRS="$(echo $LIBDIRS | sed 's/ / -I /g')"
+M4_EXTRA_LIBS=
 
 usage() {
 	echo "Usage: minutes-m4rkup <input>"
+}
+
+# params: input-file format visibility output-file
+render() {
+	local input="$1"; shift
+	local format=$1; shift
+	local visibility=$1; shift
+	local output="$1"; shift
+
+	# Note: m4 finds bootstrap.m4 in its include paths
+	cat "$input" | m4 -I $M4_LIBDIRS \
+		-DFORMAT=$format -DVISIBILITY=$visibility \
+		bootstrap.m4 $M4_EXTRA_LIBS - \
+		> "$output"
 }
 
 main() {
@@ -15,6 +30,17 @@ main() {
 	fi
 
 	input="$1"
+	inputfiledir="$(dirname $input)"
+
+	# find additional libs to be included
+	# note: m4 reads files in the order they appear on the command line
+	for dir in ~ $inputfiledir; do
+		local f="$dir/.minutes-m4rkup.m4"
+		if [ -r $f ]; then
+			M4_EXTRA_LIBS="$M4_EXTRA_LIBS $f"
+		fi
+	done
+
 	render_markdown_confidential=1
 	render_markdown_public=1
 	render_json_confidential=1
@@ -32,10 +58,7 @@ main() {
 
 				set -x
 				# Note: m4 finds bootstrap.m4 in its include paths
-				cat "$input" | m4 -I $M4_LIBDIRS \
-					-DFORMAT=$format -DVISIBILITY=$visibility \
-					bootstrap.m4 - \
-					> $output-$visibility.$format
+				render "$input" $format $visibility "$output-$visibility.$format"
 				set +x
 			fi
 		done
