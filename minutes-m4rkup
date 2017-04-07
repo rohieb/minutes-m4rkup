@@ -1,6 +1,6 @@
 #!/bin/bash
-readonly SELF="$(type -p $0)"
-readonly BINDIR="$(dirname $SELF)"
+readonly SELF="$(basename $0)"
+readonly BINDIR="$(readlink -m $(dirname $0))"
 readonly LIBDIRS="$BINDIR/lib /usr/local/lib/minutes-m4rkup /usr/lib/minutes-m4rkup"
 readonly M4_LIBDIRS="$(echo $LIBDIRS | sed 's/ / -I /g')"
 
@@ -67,6 +67,6 @@ main() {
 }
 
 # don't do things when being source'd
-if [ "`basename $0`" = "minutes-m4rkup" ]; then
+if [ "$SELF" = "minutes-m4rkup" ]; then
 	main "$@"
 fi
