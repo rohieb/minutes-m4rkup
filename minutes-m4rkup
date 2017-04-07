@@ -1,8 +1,9 @@
 #!/bin/bash
-SELF="$(type -p $0)"
-BINDIR="$(dirname $SELF)"
-LIBDIRS="$BINDIR/lib /usr/local/lib/minutes-m4rkup /usr/lib/minutes-m4rkup"
-M4_LIBDIRS="$(echo $LIBDIRS | sed 's/ / -I /g')"
+readonly SELF="$(type -p $0)"
+readonly BINDIR="$(dirname $SELF)"
+readonly LIBDIRS="$BINDIR/lib /usr/local/lib/minutes-m4rkup /usr/lib/minutes-m4rkup"
+readonly M4_LIBDIRS="$(echo $LIBDIRS | sed 's/ / -I /g')"
+
 M4_EXTRA_LIBS=
 
 usage() {
@@ -29,8 +30,8 @@ main() {
 		exit 1
 	fi
 
-	input="$1"
-	inputfiledir="$(dirname $input)"
+	local input="$1"
+	local inputfiledir="$(dirname $input)"
 
 	# find additional libs to be included
 	# note: m4 reads files in the order they appear on the command line
@@ -41,20 +42,20 @@ main() {
 		fi
 	done
 
-	render_markdown_confidential=1
-	render_markdown_public=1
-	render_json_confidential=1
-	render_json_public=1
+	local render_markdown_confidential=1
+	local render_markdown_public=1
+	local render_json_confidential=1
+	local render_json_public=1
 
 	# TODO: parse options
 
 	for format in markdown json; do
 		for visibility in public confidential; do
-			varref="render_${format}_${visibility}"
+			local varref="render_${format}_${visibility}"
 			eval "do_format=\$$varref"
 			if [ -n "$do_format" ]; then
 				# trim the extension off the input filename
-				output=$(echo $input | sed 's/^\(.*\)\.[^.]\+/\1/')
+				local output=$(echo $input | sed 's/^\(.*\)\.[^.]\+/\1/')
 
 				set -x
 				# Note: m4 finds bootstrap.m4 in its include paths
