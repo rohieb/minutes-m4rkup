@@ -17,10 +17,10 @@ render() {
 	local visibility=$1; shift
 	local output="$1"; shift
 
-	# Note: m4 finds bootstrap.m4 in its include paths
+	# Note: m4 finds quoting.m4 and bootstrap.m4 in its include paths
 	cat "$input" | m4 -I $M4_LIBDIRS \
 		-DFORMAT=$format -DVISIBILITY=$visibility \
-		bootstrap.m4 $M4_EXTRA_LIBS - \
+		quoting.m4 bootstrap.m4 $M4_EXTRA_LIBS - \
 		> "$output"
 }
 
