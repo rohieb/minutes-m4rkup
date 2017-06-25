@@ -1,0 +1,31 @@
+version 1
+
+snippet board-meeting
+	MEETING_MINUTES(BOARD_MEETING, ${1:date}, ${2:time}, ${3:place},
+		«${4:Attending people}»,
+		«${5:Absent people}»,
+		«${6:Minute taker}»)
+
+snippet vote-adopted
+	RESOLUTION(${1:ref}, VOTE_ADOPTED(${3:pro},${4:con},${5:neutral}), ${6:Title}, ${7:money}, $8)
+
+snippet vote-rejected
+	RESOLUTION(${1:ref}, VOTE_REJECTED(${3:pro},${4:con},${5:neutral}), ${6:Title}, ${7:money}, $8)
+
+snippet consensus-adopted
+	RESOLUTION(${1:ref}, CONSENSUS_ADOPTED(), ${6:Title}, ${7:money}, $8)
+
+snippet consensus-rejected
+	RESOLUTION(${1:ref}, CONSENSUS_REJECTED(), ${6:Title}, ${7:money}, $8)
+
+snippet todo
+	TODO(${1:ref}, ${2:who}, $0)
+
+snippet done
+	DONE(${1:ref}, ${2:who}, $0)
+
+snippet confidential
+	CONFIDENTIAL()dnl
+	$0
+	REPLACE_WITH()dnl
+	END_CONFIDENTIAL()dnl
