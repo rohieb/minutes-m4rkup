@@ -25,12 +25,24 @@ See the `tests/` folder for some examples.
 
 Currently supported input formats are:
 
-* Markdown with M4 macros
+* Markdown with M4 macros (or, as I call it, M4rkdown)
 
 Currently supported output formats are:
 
 * Markdown
 * JSON
+
+
+## Invocation
+
+Currently, every combination of output format and visibility is written in one
+go:
+
+    $ minutes-m4rkup input.m4rkdown
+
+This will create the files `input-public.json`, `input-public.markdown`,
+`input-confidential.json` and `input-confidential.markdown` in the current
+directory.
 
 
 ## Macro Reference
