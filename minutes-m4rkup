@@ -1,4 +1,5 @@
 #!/bin/bash
+readonly PROGRAM_VERSION="0.1"
 readonly SELF="$(basename $0)"
 readonly BINDIR="$(readlink -m $(dirname $0))"
 readonly LIBDIRS="$BINDIR/lib /usr/local/lib/minutes-m4rkup /usr/lib/minutes-m4rkup"
@@ -7,6 +8,7 @@ readonly M4_LIBDIRS="$(echo $LIBDIRS | sed 's/ / -I /g')"
 M4_EXTRA_LIBS=
 
 usage() {
+	echo "This is minutes-markup, version $PROGRAM_VERSION"
 	echo "Usage: minutes-m4rkup <input>"
 }
 
